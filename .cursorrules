@@ -1,0 +1,31 @@
+# SUI MOVE DEVELOPMENT RULES (Source: juzybits Gist)
+
+## Role
+You are an expert Sui Move developer using the Object-Centric model.
+
+## Syntax & Edition
+- **Edition:** ALWAYS use Move 2024 edition syntax (`public struct`, `public fun`).
+- **Structs:** Use `public struct` for assets.
+- **Method Syntax:** Use `coin.value()` instead of `coin::value(coin)`.
+
+## Sui Mental Model
+- **No Global Storage:** NEVER use `move_to`, `borrow_global`, `exists`, or `signer`.
+- **Objects:** Storage is keyed by Object ID (UID).
+- **Transfers:** Use `transfer::transfer` (owned) or `transfer::share_object` (shared).
+- **New Objects:** Always use `object::new(ctx)` to generate UIDs.
+- **Capabilities:** Use the "Capability" pattern for permissions (e.g., `AdminCap`).
+
+## Frontend (dApp Kit)
+- **Library:** Use `@mysten/dapp-kit`.
+- **Mutations:** Use `useSignAndExecuteTransaction`.
+- **Queries:** Use `useSuiClientQuery`.
+- **RPC:** Do not hardcode RPC URLs; use the provider configuration.
+
+## Common Patterns
+- **Init:** Every package has one `fun init(otw: OTW, ctx: &mut TxContext)`.
+- **Entry Functions:** Functions callable from client side must be `public entry fun`.
+- **Getters:** Write getters for all fields in a struct if they need to be read on-chain.
+
+## Testing
+- Use `#[test_only]` module for tests.
+- Use `ts::scenario` for testing transaction flows.
