@@ -6,6 +6,7 @@ import {
   SuiClientProvider,
   WalletProvider,
 } from "@mysten/dapp-kit";
+import { Analytics } from "@vercel/analytics/react";
 import { AddressCheckerApp } from "./ui/AddressCheckerApp";
 import "./styles.css";
 
@@ -23,6 +24,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
       <SuiClientProvider networks={networkConfig} defaultNetwork="mainnet">
         <WalletProvider autoConnect>
           <AddressCheckerApp />
+          <Analytics />
         </WalletProvider>
       </SuiClientProvider>
     </QueryClientProvider>
