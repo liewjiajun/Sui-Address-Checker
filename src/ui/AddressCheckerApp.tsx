@@ -232,9 +232,9 @@ export const AddressCheckerApp: React.FC = () => {
               <tbody>
                 {results.map((r) => (
                   <tr key={r.original}>
-                    <td>{r.original}</td>
+                    <td className="address-cell">{r.original}</td>
                     <td>{r.kind}</td>
-                    <td className="mono">
+                    <td className="mono address-cell">
                       {r.resolvedAddress ?? "—"}
                     </td>
                     <td className={r.valid ? "ok" : "bad"}>
@@ -248,6 +248,18 @@ export const AddressCheckerApp: React.FC = () => {
           </div>
         )}
       </div>
+      <footer className="footer">
+        Vibe coded poorly by{" "}
+        <a
+          href="https://x.com/jjonlydown"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="footer-link"
+        >
+          @jjonlydown
+        </a>{" "}
+        🤡
+      </footer>
     </div>
   );
 };
